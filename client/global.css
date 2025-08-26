@@ -1,0 +1,414 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+        :root {
+    --background: 260 85% 8%;
+    --foreground: 280 100% 95%;
+
+    --card: 260 70% 12%;
+    --card-foreground: 280 100% 95%;
+
+    --popover: 260 70% 12%;
+    --popover-foreground: 280 100% 95%;
+
+    --primary: 315 100% 70%;
+    --primary-foreground: 260 85% 8%;
+
+    --secondary: 260 50% 18%;
+    --secondary-foreground: 280 100% 95%;
+
+    --muted: 260 40% 15%;
+    --muted-foreground: 280 50% 65%;
+
+    --accent: 195 100% 65%;
+    --accent-foreground: 260 85% 8%;
+
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 260 30% 25%;
+    --input: 260 40% 18%;
+    --ring: 315 100% 70%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 260 70% 12%;
+    --sidebar-foreground: 280 100% 95%;
+    --sidebar-primary: 315 100% 70%;
+    --sidebar-primary-foreground: 260 85% 8%;
+    --sidebar-accent: 260 50% 18%;
+    --sidebar-accent-foreground: 280 100% 95%;
+    --sidebar-border: 260 30% 25%;
+    --sidebar-ring: 195 100% 65%;
+
+    /* Cosmic space gradient colors */
+    --gradient-from: 260 100% 15%;
+    --gradient-via: 315 100% 30%;
+    --gradient-to: 195 100% 45%;
+
+    /* Space cosmic colors */
+    --sleep-primary: 315 100% 70%;
+    --sleep-secondary: 195 100% 65%;
+    --sleep-accent: 280 100% 80%;
+    --sleep-night: 260 85% 8%;
+    --sleep-dawn: 315 80% 85%;
+  }
+
+        .dark {
+    --background: 260 95% 4%;
+    --foreground: 280 100% 98%;
+
+    --card: 260 80% 6%;
+    --card-foreground: 280 100% 98%;
+
+    --popover: 260 80% 6%;
+    --popover-foreground: 280 100% 98%;
+
+    --primary: 315 100% 75%;
+    --primary-foreground: 260 95% 4%;
+
+    --secondary: 260 60% 10%;
+    --secondary-foreground: 280 100% 98%;
+
+    --muted: 260 50% 8%;
+    --muted-foreground: 280 60% 70%;
+
+    --accent: 195 100% 70%;
+    --accent-foreground: 260 95% 4%;
+
+    --destructive: 0 100% 70%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 260 40% 15%;
+    --input: 260 50% 12%;
+    --ring: 315 100% 75%;
+    --sidebar-background: 260 80% 6%;
+    --sidebar-foreground: 280 100% 98%;
+    --sidebar-primary: 315 100% 75%;
+    --sidebar-primary-foreground: 260 95% 4%;
+    --sidebar-accent: 260 60% 10%;
+    --sidebar-accent-foreground: 280 100% 98%;
+    --sidebar-border: 260 40% 15%;
+    --sidebar-ring: 195 100% 70%;
+
+    /* Enhanced cosmic gradient colors for dark mode */
+    --gradient-from: 260 100% 8%;
+    --gradient-via: 315 100% 25%;
+    --gradient-to: 195 100% 35%;
+
+    /* Enhanced space cosmic colors for dark mode */
+    --sleep-primary: 315 100% 75%;
+    --sleep-secondary: 195 100% 70%;
+    --sleep-accent: 280 100% 85%;
+    --sleep-night: 260 95% 4%;
+    --sleep-dawn: 315 80% 80%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Professional scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--sleep-primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--sleep-secondary));
+  }
+}
+
+@layer components {
+    /* Advanced cosmic gradient backgrounds */
+  .gradient-mesh {
+    background:
+      radial-gradient(circle at 20% 80%, hsl(var(--gradient-from)) 0%, transparent 60%),
+      radial-gradient(circle at 80% 20%, hsl(var(--gradient-via)) 0%, transparent 60%),
+      radial-gradient(circle at 40% 40%, hsl(var(--gradient-to)) 0%, transparent 60%),
+      radial-gradient(circle at 60% 60%, hsl(315 100% 40%) 0%, transparent 40%),
+      radial-gradient(circle at 10% 30%, hsl(195 100% 50%) 0%, transparent 35%),
+      linear-gradient(135deg, hsl(var(--gradient-from)), hsl(var(--gradient-via)), hsl(var(--gradient-to)));
+  }
+
+  /* Professional card hover effects */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Floating animation for background elements */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-animation-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .float-animation-slow {
+    animation: float 8s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+    /* Enhanced cosmic pulse glow effect */
+  .pulse-glow {
+    animation: cosmic-pulse 2s ease-in-out infinite alternate;
+  }
+
+  /* Cosmic nebula effect */
+  .cosmic-glow {
+    animation: cosmic-glow 3s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 20px hsl(315 100% 70%));
+  }
+
+  /* Space shimmer effect */
+  .space-shimmer {
+    animation: space-shimmer 4s ease-in-out infinite;
+  }
+
+  /* Text shimmer effect for headers */
+  .text-shimmer {
+    background: linear-gradient(
+      45deg,
+      transparent 25%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* Button loading state */
+  .button-loading {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .button-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    animation: loading-sweep 1.5s infinite;
+  }
+
+    /* Cosmic glass morphism */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px) saturate(150%);
+    border: 1px solid hsl(var(--sleep-primary) / 0.2);
+    box-shadow:
+      0 8px 32px hsl(var(--sleep-night) / 0.3),
+      0 0 20px hsl(var(--sleep-primary) / 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-card-dark {
+    background: hsl(var(--sleep-night) / 0.15);
+    backdrop-filter: blur(25px) saturate(150%);
+    border: 1px solid hsl(var(--sleep-secondary) / 0.2);
+    box-shadow:
+      0 8px 32px hsl(var(--sleep-night) / 0.5),
+      0 0 30px hsl(var(--sleep-secondary) / 0.1);
+  }
+
+    /* Advanced cosmic button styles */
+  .btn-gradient {
+    background: linear-gradient(135deg, hsl(var(--sleep-primary)), hsl(var(--sleep-secondary)), hsl(var(--sleep-accent)));
+    background-size: 200% 200%;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow:
+      0 0 20px hsl(var(--sleep-primary) / 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, hsl(var(--sleep-secondary)), hsl(var(--sleep-accent)), hsl(var(--sleep-primary)));
+    background-size: 200% 200%;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .btn-gradient:hover {
+    background-position: 100% 100%;
+    box-shadow:
+      0 0 30px hsl(var(--sleep-primary) / 0.5),
+      0 0 60px hsl(var(--sleep-secondary) / 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .btn-gradient:hover::before {
+    opacity: 1;
+    background-position: 100% 100%;
+  }
+
+  .btn-gradient > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Enhanced tab styling */
+  .tab-enhanced {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tab-enhanced::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: hsl(var(--sleep-primary));
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .tab-enhanced[data-state="active"]::before {
+    width: 100%;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+@keyframes cosmic-pulse {
+  0% {
+    box-shadow:
+      0 0 10px hsl(315 100% 70% / 0.3),
+      0 0 20px hsl(315 100% 70% / 0.2),
+      0 0 30px hsl(315 100% 70% / 0.1);
+  }
+  100% {
+    box-shadow:
+      0 0 20px hsl(315 100% 70% / 0.6),
+      0 0 40px hsl(315 100% 70% / 0.4),
+      0 0 60px hsl(315 100% 70% / 0.2);
+  }
+}
+
+@keyframes cosmic-glow {
+  0% {
+    filter:
+      drop-shadow(0 0 10px hsl(315 100% 70%))
+      drop-shadow(0 0 20px hsl(195 100% 65%));
+  }
+  100% {
+    filter:
+      drop-shadow(0 0 20px hsl(315 100% 70%))
+      drop-shadow(0 0 40px hsl(195 100% 65%))
+      drop-shadow(0 0 60px hsl(280 100% 80%));
+  }
+}
+
+@keyframes space-shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    filter: hue-rotate(270deg);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes loading-sweep {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.5s ease-out forwards;
+}
+
+/* Staggered animations */
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-500 { animation-delay: 0.5s; }
